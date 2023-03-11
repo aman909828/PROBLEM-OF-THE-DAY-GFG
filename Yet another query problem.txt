@@ -1,0 +1,44 @@
+#SIMPLE PYTHON SOLUTION WITH O(N) TIME & SPACE COMPLEXITY:-
+#PLEASE UPVOTE if you like 😁 If you have any question, feel free to ask.
+
+class Solution:
+
+    def solveQueries(self, N : int, num : int, A : List[int], Q : List[List[int]]) -> List[int]:
+
+        dic={}
+
+        for i in A:
+
+            if i in dic:
+
+                dic[i]+=1
+
+            else:
+
+                dic[i]=1
+
+        res=[]
+
+        for i in Q:
+
+            l,r,k=i[0],i[1],i[2]
+
+            newdict=dic.copy()
+
+            count=0
+
+            for x in range(0,l):
+
+                newdict[A[x]]-=1
+
+            for x in range(l,r+1):
+
+                if newdict[A[x]]==k:
+
+                    count+=1
+
+                newdict[A[x]]-=1
+
+            res.append(count)
+
+        return res
