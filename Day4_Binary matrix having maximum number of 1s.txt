@@ -1,0 +1,16 @@
+#PLEASE UPVOTE if you like 😁 If you have any question, feel free to ask.
+
+#User function Template for python3
+
+class Solution:
+    
+    def findMaxRow(self, mat, N):
+        ans=[0,0]
+        for i in range(N):
+            j=N-1-ans[-1]
+            while mat[i][j]==1 and j>=0:
+                ans[0]=i
+                j-=1
+            ans[-1]=N-1-j
+        return ans
+                
