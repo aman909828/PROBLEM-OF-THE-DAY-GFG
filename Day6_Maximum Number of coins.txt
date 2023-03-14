@@ -1,0 +1,109 @@
+✅ Python  Solution || DP || Aditya Verma approach 
+
+Solution 1:-   Bottom Up(Tabulation)
+
+Matrix chain multiplication concept is used to solve the question.
+
+Working fine in python with all test cases being passed.
+
+PLEASE UPVOTE if you like 😁 If you have any question, feel free to ask.
+
+
+#User function Template for python3
+
+class Solution():
+
+    def maxCoins(self, N, a):
+
+        dp=[[0 for i in range(N+2)]for j in range(N+2)]
+
+        a.insert(0,1)  
+
+        a.append(1)
+
+        for i in range(0,N-1+1):
+
+            for start in range(1,N-i+1):
+
+                end=start+i
+
+                res=0
+
+                for k in range(start,end+1):
+
+                    temp=(dp[start][k-1] + a[start-1]*a[k]*a[end+1] + dp[k+1][end])
+
+                    res=max(res,temp)
+
+                dp[start][end]=res
+
+        return dp[1][N]
+
+        
+
+
+✅ C++ Solution || DP || Aditya Verma approach 
+
+solution2:-Recursion+Memoized
+
+Matrix chain multiplication concept is used to solve the question.
+
+Working fine in C++ with all test cases being passed.
+
+PLEASE UPVOTE if you like 😁 If you have any question, feel free to ask.
+
+//User function Template for C++
+
+class Solution{
+
+    public:
+
+        int dp[402][402];
+
+        
+
+        int helper(vector<int> &A, int start, int end){
+
+            if(start>end){
+
+                return 0;
+
+            }
+
+            if(dp[start][end]!=-1){
+
+                return dp[start][end];
+
+            }
+
+            int res=INT_MIN;
+
+            for(int burst=start;burst<=end;burst++){
+
+                int cost=A[burst]*A[start-1]*A[end+1]+helper(A,start,burst-1)+helper(A,burst+1,end);
+
+                res=max(res,cost);
+
+            }
+
+            return dp[start][end]=res;
+
+        }
+
+        int maxCoins(int N, vector <int> &a){
+
+            memset(dp,-1,sizeof(dp));
+
+            a.insert(a.begin(),1);
+
+            a.push_back(1);
+
+            return helper(a,1,N);
+
+        }
+
+};
+
+PLEASE UPVOTE if you like 😁 If you have any question, feel free to ask.
+
+ 
