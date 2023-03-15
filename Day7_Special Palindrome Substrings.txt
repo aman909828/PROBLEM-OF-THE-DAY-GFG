@@ -1,0 +1,29 @@
+#User function Template for python3
+
+class Solution():
+    def specialPalindrome(self, s1, s2):
+        n,m = len(s1), len(s2)
+        ans = float('inf')
+        for i in range(n-m+1):
+            costs = 0
+            for k in range(m):
+                if s1[i+k] != s2[k]:
+                    costs += 1
+            
+            s,e = 0, n-1
+            while s < e:
+                if i <= s < i+m and i <= e < i+m and s2[s-i] != s2[e-i]:
+                    break
+                left = s1[s]
+                if i <= s < i+m:
+                    left = s2[s-i]
+                right = s1[e]
+                if i <= e < i+m:
+                    right = s2[e-i]
+                if left != right:
+                    costs += 1
+                s += 1
+                e -= 1
+            else:
+                ans = min(ans, costs)
+        return -1 if ans == float('inf') else ans
