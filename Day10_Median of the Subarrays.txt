@@ -1,0 +1,32 @@
+#User function Template for python3
+from collections import defaultdict
+class Solution:
+    def solve(self,n,arr,m):
+        dic=defaultdict(int)
+        curr=0
+        total=0
+        ans=0
+        dic[curr]=1
+        for i in range(n):
+            if arr[i]>=m:
+                x=1
+            else:
+                x= -1
+                
+            if x==-1:
+                total=total- dic[curr-1]
+            else:
+                total=total+dic[curr]
+                
+            curr+=x
+            ans+=total
+            dic[curr]=dic[curr]+1
+        return ans
+        
+        
+    def countSubarray(self, N, A, M):
+        x=self.solve(N,A,M+1)
+        y=self.solve(N,A,M)
+        return y-x
+        
+
