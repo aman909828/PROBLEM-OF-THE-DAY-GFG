@@ -1,0 +1,42 @@
+#User function Template for python3
+
+'''
+class Node:
+    def __init__(self,val):
+        self.data=val
+        self.left=None
+        self.right=None
+'''
+
+class Solution:
+    
+            
+    def solve(self,node):
+        if not node:
+            return int(1e9)
+        if node.left==None and node.right==None:
+            return node.data
+        left=node.data+self.solve(node.left)
+        right=node.data+self.solve(node.right)
+        return min(left,right)
+        
+        
+    def maxDifferenceBST(self,root, target):
+        self.head=None
+        def find(node,target):
+            if not node:
+                return -int(1e9)
+            if node.data==target:
+                self.head=node
+                return target
+            if target>node.data:
+                return node.data+find(node.right,target)
+            else:
+                return node.data+find(node.left,target)
+            
+            
+        rtt=find(root,target)
+        if self.head==None:
+            return -1
+        ttl=self.solve(self.head)
+        return rtt-ttl
