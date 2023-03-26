@@ -1,0 +1,14 @@
+#User function Template for python3
+import heapq
+class Solution:
+    def unvisitedLeaves(self, n, leaves, frogs):
+        vis=[0 for i in range(leaves+1)]
+        for i in frogs:
+            if i<=leaves and vis[i]==0:
+                for j in range(i,leaves+1,i):
+                    vis[j]=1
+        cnt=sum(vis)
+        return leaves-cnt
+                
+        
+        # code here
