@@ -1,0 +1,24 @@
+#User function Template for python3
+
+class Solution:
+    def countSpecialNumbers(self, N, arr):
+        ans=0
+        mx=max(arr)
+        factors=[0 for i in range(mx+1)]
+        dic=dict()
+        for i in range(N):
+            if arr[i] in dic:
+                dic[arr[i]]+=1
+                continue
+            else:
+                dic[arr[i]]=1
+            
+            for j in range(2*arr[i],mx+1,arr[i]):
+                factors[j]=1
+            
+        
+        for i in arr:
+            if factors[i]==1 or dic[i]>1:
+                ans+=1
+        return ans
+        # Code here
