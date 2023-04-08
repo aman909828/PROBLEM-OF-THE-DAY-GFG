@@ -1,0 +1,22 @@
+#User function Template for python3
+
+from typing import List
+
+class Solution:
+    def makeBeautiful(self, arr: List[int]) -> List[int]:
+        stack = []
+        i = 0
+        while i < len(arr):
+            curr = arr[i]
+            if stack:
+                if (stack[-1] >= 0 and curr >= 0) or (stack[-1] < 0 and curr < 0):
+                    stack.append(curr)
+                    i += 1
+                else:
+                    stack.pop(-1)
+                    i += 1
+            else:
+                stack.append(curr)
+                i += 1
+        return stack
+        # code here
