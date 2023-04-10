@@ -1,0 +1,15 @@
+#User function Template for python3
+
+class Solution: 
+    def maxIntersections(self, lines, N):
+        a = {}
+        for i in range(N):
+            a[lines[i][0]] = a.get(lines[i][0],0)+1
+            a[lines[i][1]+1] = a.get(lines[i][1]+1,0)-1
+        ans = 0
+        s = 0
+        for i in sorted(a):
+            s += a[i]
+            ans = max(ans,s)
+        return ans
+        # Code here
