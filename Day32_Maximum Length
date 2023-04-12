@@ -1,0 +1,10 @@
+#User function Template for python3
+
+class Solution():
+    def solve(self, a, b, c):
+        mx=max(a,b,c)
+        sums=a+b+c
+        if mx>2*(sums+1-mx):
+            return -1
+        return sums
+        #your code goes here
