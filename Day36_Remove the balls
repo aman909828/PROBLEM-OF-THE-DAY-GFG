@@ -1,0 +1,16 @@
+from typing import List
+
+
+class Solution:
+    def finLength(self, N : int, color : List[int], radius : List[int]) -> int:
+        s=[]
+        for i in range(N):
+            x=(color[i],radius[i])
+            if s and s[-1]==x:
+                s.pop(-1)
+            else:
+                s.append(x)
+        return len(s)
+        # code here
+        
+
