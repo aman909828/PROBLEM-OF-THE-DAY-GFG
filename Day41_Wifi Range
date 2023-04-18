@@ -1,0 +1,20 @@
+#User function Template for python3
+class Solution:
+    def wifiRange(self, n, S, x): 
+        arr=[0 for i in range(n)]
+        cnt=0
+        for i in range(n):
+            if S[i]=="1":
+                j=i-x
+                k=i+x
+                if j<cnt:
+                    j=cnt
+                while j<=k and j<n:
+                    arr[j]=1
+                    j+=1
+                    cnt=max(cnt,j)
+        for i in arr:
+            if i==0:
+                return 0
+        return 1
+        #code here
