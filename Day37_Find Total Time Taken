@@ -1,0 +1,19 @@
+from typing import List
+
+
+class Solution:
+    def totalTime(self, n : int, arr : List[int], time : List[int]) -> int:
+        dic = {}
+        ans = -1
+        for i in arr:
+            ans += 1
+            if i not in dic:
+                dic[i] = ans
+            else:
+                passed = ans - dic[i]
+                ans += max(0, time[i-1]-passed)
+                dic[i] = ans
+        return ans
+        # code here
+        
+
