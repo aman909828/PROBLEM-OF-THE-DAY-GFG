@@ -1,0 +1,54 @@
+#User function Template for python3
+
+'''
+class Node:
+    def __init__(self,val):
+        self.data=val
+        self.left=None
+        self.right=None
+'''
+
+class Solution:
+    length = int(1e9)
+    
+    @staticmethod
+    def isBST(root, target):
+        if Solution.isBSTUtil(root, float('-inf'), float('inf')):
+            if Solution.findSum(root) == target:
+                Solution.length = min(Solution.length, Solution.findLength(root))
+        if root.left is not None:
+            Solution.isBST(root.left, target)
+        if root.right is not None:
+            Solution.isBST(root.right, target)
+
+    @staticmethod
+    def isBSTUtil(root, min_val, max_val):
+        if root is None:
+            return True
+        if root.data <= min_val or root.data >= max_val:
+            return False
+        return Solution.isBSTUtil(root.left, min_val, root.data) and Solution.isBSTUtil(root.right, root.data, max_val)
+
+    @staticmethod
+    def findSum(root):
+        if root is None:
+            return 0
+        l_sum = Solution.findSum(root.left)
+        r_sum = Solution.findSum(root.right)
+        return l_sum + r_sum + root.data
+
+    @staticmethod
+    def findLength(root):
+        if root is None:
+            return 0
+        l_len = Solution.findLength(root.left)
+        r_len = Solution.findLength(root.right)
+        return l_len + r_len + 1
+
+    @staticmethod
+    def minSubtreeSumBST(target, root):
+        Solution.length = int(1e9)
+        Solution.isBST(root, target)
+        if Solution.length == int(1e9):
+            return -1
+        return Solution.length
