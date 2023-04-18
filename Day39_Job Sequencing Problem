@@ -1,0 +1,23 @@
+#User function Template for python3
+
+class Solution:
+    
+    #Function to find the maximum profit and the number of jobs done.
+    def JobScheduling(self,Jobs,n):
+        Jobs.sort(key=lambda x: (-x.profit,x.deadline))
+        maxx,count,ans=0,0,0
+        for i in Jobs:
+            maxx=max(maxx,i.deadline)
+        check=[False]*maxx
+        for i in Jobs:
+            d=i.deadline
+            d-=1
+            for j in range(d,-1,-1):
+                if check[j]!=True:
+                    check[j]=True
+                    ans+=i.profit
+                    count+=1
+                    break
+        return [count,ans]
+        
+        # code here
