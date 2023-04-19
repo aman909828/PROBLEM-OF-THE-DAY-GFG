@@ -1,0 +1,45 @@
+'''
+# node class:
+
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+
+'''
+
+class Solution:
+    def add_subtree(self,node,dist):
+        if not node or dist<0:
+            return 
+        self.sums+=node.data
+        self.add_subtree(node.left,dist-1)
+        self.add_subtree(node.right,dist-1)
+        
+    def traverse(self,node,target,k):
+        if not node:
+            return -1
+        if node.data==target:
+            self.add_subtree(node,k)
+            return k-1
+        dist=self.traverse(node.left,target,k)
+        if dist>-1:
+            self.sums+=node.data
+            self.add_subtree(node.right,dist-1)
+            return dist-1
+            
+        dist=self.traverse(node.right,target,k)
+        if dist>-1:
+            self.sums+=node.data
+            self.add_subtree(node.left,dist-1)
+            return dist-1
+        return -1
+            
+    def ladoos(self, root, home, k):
+        self.sums=0
+        self.traverse(root,home,k)
+        return self.sums
+        # Your code goes here
+
+
