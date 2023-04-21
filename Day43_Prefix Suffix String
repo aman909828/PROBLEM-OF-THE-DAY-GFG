@@ -1,0 +1,22 @@
+#User function Template for python3
+
+class Solution:
+    def prefixSuffixString(self, s1, s2) -> int:
+        s=set()
+        #store all words in 
+        for i in range(len(s1)):
+            t1=""
+            t2=s1[i]
+            n=len(s1[i])
+            for j in range(n):
+                t1+=s1[i][j]
+                t2=t2[1:]
+                s.add(t1)
+                s.add(t2)
+                
+        res=0
+        for i in range(len(s2)):
+            if s2[i] in s:
+                res+=1
+        return res
+        #code here
