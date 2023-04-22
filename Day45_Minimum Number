@@ -1,0 +1,9 @@
+#User function Template for python3
+import math
+class Solution:
+    def minimumNumber(self, n, arr):
+        ans=0
+        for i in range(n):
+            ans=math.gcd(ans,arr[i])
+        return ans
+        #code here
