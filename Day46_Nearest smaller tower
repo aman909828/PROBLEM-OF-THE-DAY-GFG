@@ -1,0 +1,88 @@
+#User function Template for python3
+
+class Solution:
+    def nearestSmallestTower(self,arr):
+        #code here
+        n=len(arr)
+        left=[]
+        stack=[]
+        pseudo=-1
+        for i in range(n):
+            x=len(stack)
+            if i==0:
+                left.append(pseudo)
+                stack.append((arr[i],i))
+            elif x>0 and arr[i]>stack[-1][0]:
+                left.append(stack[-1][1])
+                stack.append((arr[i],i))
+            elif x>0 and arr[i]<=stack[-1][0]:
+                while x>0 and arr[i]<=stack[-1][0]:
+                    stack.pop(-1)
+                    x-=1
+                if x==0:
+                    left.append(pseudo)
+                    stack.append((arr[i],i))
+                else:
+                    left.append(stack[-1][1])
+                    stack.append((arr[i],i))
+        
+        right=[]
+        stack=[]
+        pseudo=n
+        for i in range(n-1,-1,-1):
+            x=len(stack)
+            if i==n-1:
+                right.append(pseudo)
+                stack.append((arr[i],i))
+            elif x>0 and arr[i]>stack[-1][0]:
+                right.append(stack[-1][1])
+                stack.append((arr[i],i))
+            elif x>0 and arr[i]<=stack[-1][0]:
+                while x>0 and arr[i]<=stack[-1][0]:
+                    stack.pop(-1)
+                    x-=1
+                if x==0:
+                    right.append(pseudo)
+                    stack.append((arr[i],i))
+                else:
+                    right.append(stack[-1][1])
+                    stack.append((arr[i],i))
+                    
+        right=right[::-1]
+        ans=[]
+        for i in range(n):
+            x=y=1e9
+            if left[i]>-1:
+                x=abs(left[i]-i)
+            if right[i]<n:
+                y=abs(right[i]-i)
+            if x==1e9:
+                if y==1e9:
+                    ans.append(-1)
+                else:
+                    ans.append(right[i])
+            elif y==1e9:
+                ans.append(left[i])
+            elif x<y:
+                ans.append(left[i])
+            elif x>y:
+                ans.append(right[i])
+            else:
+                if left[i]>-1 and right[i]<n:
+                    if arr[left[i]]<arr[right[i]]:
+                        ans.append(left[i])
+                    elif arr[left[i]]>arr[right[i]]:
+                        ans.append(right[i])
+                    else:
+                        if left[i]<right[i]:
+                            ans.append(left[i])
+                        else:
+                            ans.append(right[i])
+                elif left[i]<0 and right[i]>=n:
+                    ans.append(-1)
+                elif left[i]<0:
+                    ans.append(right[i])
+                elif right[i]>=n:
+                    ans.append(left[i])
+        
+        return ans
