@@ -1,0 +1,32 @@
+from typing import List
+from collections import defaultdict
+
+class Solution:
+    def calc(self,m,k):
+        c=0
+        for i in range(25,-1,-1):
+            if m[i]:
+                c+=m[i]
+            if c>=k:
+                return chr(i+ord('a'))
+            
+            
+    def easyTask(self,n,s,q,queries) -> List[int]:
+        res=[]
+        for i in queries:
+            if i[0]=="1":
+                s=s[0:int(i[1])]+i[2]+s[int(i[1])+1:]
+                
+            else:
+                x=int(i[3])
+                p,q=int(i[1]),int(i[2])
+                if x>n:
+                    continue
+                h=defaultdict(int)
+                for j in s[p:q+1]:
+                    h[ord(j)-ord('a')]+=1
+                j=self.calc(h,x)
+                res.append(j)
+                
+        return res
+        # code here
