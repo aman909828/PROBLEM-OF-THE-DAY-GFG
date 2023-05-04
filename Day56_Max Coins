@@ -1,0 +1,24 @@
+from typing import List
+
+
+class Solution:
+    def maxCoins(self, n : int, ranges : List[List[int]]) -> int:
+        ranges.sort(key=lambda x:(x[1],x[0]))
+        mx,end=[],[]
+        sofar=ans=0
+        for s,e,cost in ranges:
+            l,h=0,len(end)
+            while l<h:
+                mid=(l+h)//2
+                if end[mid]<=s:
+                    l=mid+1
+                else:
+                    h=mid
+            v=cost
+            if 0<=l-1<len(end):
+                v+=mx[l-1]
+            ans=max(ans,v)
+            end.append(e)
+            sofar=max(sofar,cost)
+            mx.append(sofar)
+        return ans
