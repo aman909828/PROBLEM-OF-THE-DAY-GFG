@@ -1,0 +1,14 @@
+from typing import List
+
+
+class Solution:
+    def makePalindrome(self, n : int, list : List[str]) -> bool:
+        dict={}
+        for s in list:
+            dict[s]=dict.get(s,0)+1;
+        for s in list:
+            if dict.get(s[::-1],0)!=dict.get(s,0):
+                return False
+                
+        return True
+        
