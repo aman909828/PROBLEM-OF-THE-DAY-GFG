@@ -1,0 +1,29 @@
+#User function Template for python3
+
+'''
+class Node:
+    def __init__(self,val):
+        self.data=val
+        self.left=None
+        self.right=None
+'''
+
+class Solution:
+    def dfs(self,node,k,ans):
+        if not node:
+            return set()
+
+        left=self.dfs(node.left,k,self.ans)
+        right=self.dfs(node.right,k,self.ans)
+        
+        left.add(node.data)
+        left.update(right)
+        if len(left)<=k:
+            self.ans+=1
+        return left
+            
+    def goodSubtrees(self, root, k):
+        self.ans=0
+        self.dfs(root,k,self.ans)
+        return self.ans
+        
