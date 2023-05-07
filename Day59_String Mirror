@@ -1,0 +1,36 @@
+class Solution:
+
+    def stringMirror(self, str : str) -> str:
+
+        # code here
+
+        n=len(str)
+
+        ans=""
+
+        ans+=str[0]
+
+        if n>1:
+
+            if ord(str[1])>=ord(str[0]):
+
+                ans=ans+ans
+
+                return ans
+
+        for i in range(1,n):
+
+            if ord(str[i])<=ord(str[i-1]):
+
+                ans+=str[i]
+
+            else:
+
+                break
+
+        ans=ans+ans[::-1]
+
+        return ans
+
+        
+
