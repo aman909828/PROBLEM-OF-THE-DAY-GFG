@@ -1,0 +1,38 @@
+from typing import List
+
+class Solution:
+
+    def totalCuts(self, N : int, K : int, A : List[int]) -> int:
+
+        # code here
+
+        small=[]
+
+        mn=1e7
+
+        for i in range(N-1,0,-1):
+
+            mn=min(mn,A[i])
+
+            small.append(mn)
+
+        small=small[::-1]
+
+        ans=0
+
+        mx=-1
+
+        for i in range(N-1):
+
+            mx=max(mx,A[i])
+
+            if mx+small[i]>=K:
+
+                ans+=1
+
+        return ans
+
+            
+
+            
+
