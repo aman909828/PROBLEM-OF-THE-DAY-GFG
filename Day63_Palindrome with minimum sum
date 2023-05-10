@@ -1,0 +1,64 @@
+import math
+
+class Solution:
+
+    def minimumSum(self, s : str) -> int:
+
+        n=len(s)
+
+        st=0
+
+        end=n-1
+
+        prev=None
+
+        ans=0
+
+        while st<end:
+
+            if s[st]==s[end]=='?':
+
+                st+=1
+
+                end-=1
+
+                continue
+
+            if s[st]==s[end]:
+
+                if prev:
+
+                    ans+=abs(ord(s[st])-ord(prev))
+
+                prev=s[st]
+
+            elif s[st]=='?' or s[end]=='?':
+
+                curr=s[st] if s[st]!='?' else s[end]
+
+                if prev:
+
+                    ans+=abs(ord(curr)-ord(prev))
+
+                prev=curr
+
+            else:
+
+                return -1
+
+            st+=1
+
+            end-=1
+
+        return ans*2
+
+
+
+        # code here
+
+        
+
+
+
+
+
