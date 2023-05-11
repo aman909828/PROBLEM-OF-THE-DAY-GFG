@@ -1,0 +1,48 @@
+from typing import List
+
+class Solution:
+
+    def arrayOperations(self, n : int, arr : List[int]) -> int:
+
+        # code here
+
+        flag=0
+
+        ans=0
+
+        prev=0
+
+        for i in arr:
+
+            if i!=0:
+
+                prev=i
+
+            else:
+
+                if prev!=0:
+
+                    ans+=1
+
+                    prev=i
+
+                flag=1
+
+                
+
+        if arr[n-1]!=0:
+
+            ans+=1
+
+        if flag==0:
+
+            return 1
+
+        return ans
+
+            
+
+            
+
+        
+
