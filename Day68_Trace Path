@@ -1,0 +1,27 @@
+#User function Template for python3
+
+class Solution:
+    def isPossible(self, n, m, s):
+        # code here
+        x=y=0
+        p=q=0
+        for i in s:
+            if i=="L":
+                x+=1
+                if y!=0:
+                    y-=1
+            elif i=="R":
+                y+=1
+                if x!=0:
+                    x-=1
+            elif i=="D":
+                p+=1
+                if q!=0:
+                    q-=1
+            elif i=="U":
+                q+=1
+                if p!=0:
+                    p-=1
+            if x>=m or y>=m or p>=n or q>=n:
+                return 0
+        return 1
