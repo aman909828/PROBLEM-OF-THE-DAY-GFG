@@ -1,0 +1,31 @@
+#User function Template for python3
+
+from collections import Counter
+
+class Solution:
+
+    def isStraightHand(self, N, groupSize, hand):
+
+        # Code here
+
+
+
+        dic = Counter(hand)
+
+        for k in sorted(dic):
+
+            if dic[k] == 0:
+
+                continue
+
+            num= dic[k]
+
+            for i in range(k, k+groupSize):
+
+                dic[i] -= num
+
+                if dic[i] < 0:
+
+                    return False
+
+        return True
