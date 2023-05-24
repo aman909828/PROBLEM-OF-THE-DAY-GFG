@@ -1,0 +1,36 @@
+
+
+from typing import List
+
+class Solution:
+
+    def getMaximum(self, N : int, arr : List[int]) -> int:
+
+        # code here
+
+        if N==1:
+
+            return 1
+
+        cnt=0
+
+        for i in arr:
+
+            cnt+=i
+
+        for i in range(N,0,-1):
+
+            if cnt%i==0:
+
+                return i
+
+    
+
+               
+
+        
+
+
+
+
+
