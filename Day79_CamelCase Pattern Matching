@@ -1,0 +1,44 @@
+#User function Template for python3
+
+class Solution:
+
+    def CamelCase(self,N,Dictionary,Pattern):
+
+        l=len(Pattern)
+
+        ans=[]
+
+        for i in Dictionary:
+
+            cur=""
+
+            cnt=0
+
+            for j in range(len(i)):
+
+                if i[j].isupper():
+
+                    cur+=i[j]
+
+                    cnt+=1
+
+                if cnt==l:
+
+                    if cur==Pattern:
+
+                        ans.append(i)
+
+                        break
+
+                    else:
+
+                        break
+
+        if len(ans)==0:
+
+            return [-1]
+
+        return ans
+
+        #code here
+
