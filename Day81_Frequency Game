@@ -1,0 +1,18 @@
+#User function Template for python3
+def LargButMinFreq(arr,n):
+    dic={}
+    for i in range(n):
+        if arr[i] not in dic:
+            dic[arr[i]]=1
+        else:
+            dic[arr[i]]+=1
+    freq=1e9
+    ans=arr[0]
+    for i in dic:
+        if dic[i]<freq:
+            freq=dic[i]
+            ans=i
+        elif dic[i]==freq:
+            ans=max(ans,i)
+    return ans
+        
