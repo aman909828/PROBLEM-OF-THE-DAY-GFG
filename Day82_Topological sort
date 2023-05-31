@@ -1,0 +1,23 @@
+class Solution:
+    
+    #Function to return list containing vertices in Topological order.
+    def topoSort(self, V, adj):
+        freq=[0 for i in range(V+1)]
+        for i in range(V):
+            for j in adj[i]:
+                freq[j]+=1
+        queue=[]
+        for i in range(V):
+            if freq[i]==0:
+                queue.append(i)
+                
+        ans=[]
+        while queue:
+            node=queue.pop(0)
+            ans.append(node)
+            for i in adj[node]:
+                freq[i]-=1
+                if freq[i]==0:
+                    queue.append(i)
+        return ans
+       
