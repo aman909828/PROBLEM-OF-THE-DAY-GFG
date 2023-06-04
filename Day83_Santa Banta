@@ -1,0 +1,36 @@
+#User function Template for python3
+from collections import deque
+class Solution:
+    def precompute(self):
+        n=2*10**6
+        isprime=[1]*n
+        isprime[0]=isprime[1]=0
+        for i in range(2,n):
+            if isprime[i]:
+                for j in range(i*i,n,i):
+                    isprime[j]=0
+        self.primes=[i for i in range(n) if isprime[i]]
+        #Complete the function
+    
+    def helpSanta (self, n, m, g) :
+        vis=[0 for i in range(n+1)]
+        if m==0:
+            return -1
+        def bfs(x):
+            q=deque([x])
+            res=0
+            vis[x]=1
+            while q:
+                y=q.popleft()
+                res+=1
+                for i in g[y]:
+                    if vis[i]==0:
+                        vis[i]=1
+                        q.append(i)
+            return res
+            
+        k=0
+        for i in range(1,n+1):
+            if vis[i]==0:
+                k=max(k,bfs(i))
+        return self.primes[k-1]
