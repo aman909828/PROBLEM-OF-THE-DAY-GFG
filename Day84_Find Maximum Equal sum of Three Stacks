@@ -1,0 +1,30 @@
+from typing import List
+from collections import deque
+
+class Solution:
+    def maxEqualSum(self, N1:int,N2:int,N3:int, S1 : List[int], S2 : List[int], S3 : List[int]) -> int:
+        # coe here
+        
+        sum1=sum(S1)
+        sum2=sum(S2)
+        sum3=sum(S3)
+        S1,S2,S3=deque(S1),deque(S2),deque(S3)
+        ans=0
+        while ans==0 and sum1 and sum2 and sum3:
+            
+            if sum1==sum2==sum3:
+                ans=sum1
+                return ans
+            p=max(sum1,sum2,sum3)
+            if sum1==p:
+                x=S1.popleft()
+                sum1-=x
+            elif sum2==p:
+                x=S2.popleft()
+                sum2-=x
+            elif sum3==p:
+                x=S3.popleft()
+                sum3-=x
+     
+        return ans
+
