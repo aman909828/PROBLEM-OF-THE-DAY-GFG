@@ -1,0 +1,18 @@
+#User function Template for python3
+
+class Solution:
+    def find_permutation(self, s):
+        def helper(arr, start, end):
+            if start==end:
+                res.add("".join(arr))
+                return
+            for i in range(start, end):
+                arr[start], arr[i] = arr[i], arr[start]
+                helper(arr, start+1, end)
+                arr[start], arr[i] = arr[i], arr[start]
+        
+        s, res, len1 = list(s), set(), len(s)
+        helper(s, 0, len1)
+        return sorted(list(res))
+        
+
