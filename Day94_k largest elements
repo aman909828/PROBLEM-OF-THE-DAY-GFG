@@ -1,0 +1,12 @@
+import heapq
+class Solution:
+
+    def kLargest(self,arr, n, k):
+        h=[]
+        for i in arr:
+            heapq.heappush(h,-i)
+        ans=[]
+        for i in range(k):
+            ans.append(-heapq.heappop(h))
+        return ans
+        
