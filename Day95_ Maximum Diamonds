@@ -1,0 +1,15 @@
+#User function Template for python3
+import heapq
+class Solution:
+    def maxDiamonds(self, A, N, K):
+        h=[]
+        for i in A:
+            heapq.heappush(h,-i)
+        ans=0
+        for i in range(K):
+            x=-heapq.heappop(h)
+            ans+=x
+            x=x//2
+            heapq.heappush(h,-x)
+        return ans
+            
