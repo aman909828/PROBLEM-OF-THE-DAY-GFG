@@ -1,0 +1,21 @@
+
+from typing import List
+from math import inf
+from collections import defaultdict
+class Solution:
+    def minTime(self, n : int, locations : List[int], types : List[int]) -> int:
+        mn, mx = defaultdict(lambda: inf), defaultdict(lambda: -inf)
+        for typ, loc in zip(types, locations):
+            mn[typ] = min(mn[typ], loc)
+            mx[typ] = max(mx[typ], loc)
+        mn_prev, mx_prev = 0, 0
+        dp = [(0, 0)]
+        for typ in sorted(mn):
+            mn_cur, mx_cur = mn[typ], mx[typ]
+            dp.append((min(dp[-1][0] + abs(mx_cur-mn_prev), dp[-1][1] + abs(mx_cur-mx_prev)) + mx_cur - mn_cur,\
+                min(dp[-1][0] + abs(mn_cur-mn_prev), dp[-1][1] + abs(mn_cur-mx_prev)) + mx_cur - mn_cur))
+            mn_prev, mx_prev =  mn_cur, mx_cur
+            
+        return min(dp[-1][0] + abs(mn_cur), dp[-1][1] + abs(mx_cur))
+        
+
