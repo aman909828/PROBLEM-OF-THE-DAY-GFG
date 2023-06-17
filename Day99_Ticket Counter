@@ -1,0 +1,24 @@
+class Solution:
+    def distributeTicket(self, N : int, K : int) -> int:
+        # Code Here
+        start=1
+        end=N
+        ans=1
+        while start<=end:
+            if start+K<=end:
+                start=start+K
+                ans=start
+            else:
+                start=end
+                ans=end
+                break
+            if end-K>=start:
+                end-=K
+                ans=end
+            else:
+                end=start
+                ans=start
+                break
+        return ans
+     
+      
