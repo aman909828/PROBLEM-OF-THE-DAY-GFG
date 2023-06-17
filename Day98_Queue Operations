@@ -1,0 +1,15 @@
+#User function Template for python3
+class Solution:
+    # Function to insert element into the queue
+    def insert(self, q, k):
+        q.append(k)
+        #code here
+        
+    # Function to find frequency of an element
+    # return the frequency of k
+    def findFrequency(self, q, k):
+        cnt=0
+        for i in q:
+            if i==k:
+                cnt+=1
+        return cnt
