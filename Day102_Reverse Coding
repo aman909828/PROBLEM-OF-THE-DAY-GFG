@@ -1,0 +1,5 @@
+class Solution:
+    def sumOfNaturals(self, n):
+        mod=int(1e9)+7
+        x=(n*(n+1))%mod
+        return (x//2)%mod
