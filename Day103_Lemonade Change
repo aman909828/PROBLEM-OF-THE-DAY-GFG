@@ -1,0 +1,27 @@
+#User function Template for python3
+from collections import defaultdict
+class Solution:
+    def lemonadeChange(self, n, bills):
+        dict=defaultdict(int)
+        for i in range(n):
+            x=abs(bills[i]-5)
+            if x==0:
+                dict[bills[i]]+=1
+                #total+=bills[i]
+            elif x==15:
+                if dict[10]>=1 and dict[5]>=1:
+                    dict[10]-=1
+                    dict[5]-=1
+                elif dict[5]>=3:
+                    dict[5]-=3
+                else:
+                    return False
+                dict[bills[i]]+=1
+            elif x==5:
+                if dict[5]>=1:
+                    dict[5]-=1
+                else:
+                    return False
+                dict[bills[i]]+=1
+        return True
+                
