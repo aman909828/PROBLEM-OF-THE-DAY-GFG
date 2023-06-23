@@ -1,0 +1,16 @@
+#User function Template for python3
+
+class Solution:
+    def klengthpref(self,arr,n,k,s):
+        if k>len(s):
+            return 0
+        x=s[:k]
+        ans=0
+        for i in arr:
+            if k>len(i):
+                continue
+            if i[:k]==x:
+                ans+=1
+        return ans
+            
+        # return list of words(str) found in the board
