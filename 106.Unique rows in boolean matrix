@@ -1,0 +1,12 @@
+#User function Template for python3
+class Solution:
+    def uniqueRow(self,row, col, matrix):
+        s=set()
+        ans=[]
+        c=0
+        for i in matrix:
+            s.add("".join(str(j) for j in i))
+            if len(s)==c+1:
+                c+=1
+                ans.append(i)
+        return ans
