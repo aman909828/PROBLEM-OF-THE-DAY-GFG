@@ -1,0 +1,17 @@
+#User function Template for python3
+
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+
+class Solution:
+    def maxDepth(self,root):
+        
+        def solve(node):
+            if not node:
+                return 0
+            return 1+max(solve(node.left),solve(node.right))
+        return solve(root)
+    
