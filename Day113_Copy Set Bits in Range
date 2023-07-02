@@ -1,0 +1,7 @@
+
+class Solution:
+    def setSetBit(self, x, y, l, r):
+        for i in range(l-1,r):
+            x=x|(1<<i)&y
+        return x
+        # code here
