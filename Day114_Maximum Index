@@ -1,0 +1,26 @@
+#User function Template for python3
+class Solution:
+
+    def maxIndexDiff(self,arr,n):
+        s1=[]
+        s2=[]
+        for i in range(n):
+            if i==0:
+                s1.append(i)
+            else:
+                x=s1[-1]
+                if arr[i]>arr[x]:
+                    s2.append(i)
+                else:
+                    s1.append(i)
+        ans=0
+        while s1 and s2:
+            x,y=s1[-1],s2[-1]
+            if arr[x]<=arr[y]:
+                ans=max(ans,y-x)
+                s1.pop()
+            else:
+                s2.pop()
+        return ans
+        
+        #code here
