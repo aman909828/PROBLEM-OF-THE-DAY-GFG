@@ -1,0 +1,17 @@
+class Solution:
+    def stockBuyAndSell(self, n : int, prices : List[int]) -> int:
+        after=[0 for i in range(2)]
+        #initialization
+        for i in range(2):
+            after[i]=0  #not needed already 0 written only for understanding purpose
+
+        for ind in range(n-1,-1,-1):
+            curr=[0 for i in range(2)]
+            #buy
+            curr[1]=max(-prices[ind]+after[0],after[1])
+            #sell
+            curr[0]=max(prices[ind]+after[1],after[0])
+            after=curr
+        return after[1]
+        # code here
+        
