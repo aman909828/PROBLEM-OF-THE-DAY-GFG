@@ -1,0 +1,19 @@
+#User function Template for python3
+
+class Solution:
+    #Function to find triplets with zero sum.    
+    def findTriplets(self, arr, n):
+        arr.sort()
+        for i in range(n):
+            #sums=arr[i]
+            start,end=i+1,n-1
+            while start<end:
+                sums=arr[i]+arr[start]+arr[end]
+                if sums==0:
+                    return 1
+                elif sums<0:
+                    start+=1
+                else:
+                    end-=1
+        return 0
+        #code here
