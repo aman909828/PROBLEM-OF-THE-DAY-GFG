@@ -1,0 +1,51 @@
+#User function Template for python3
+
+class Solution:
+    def findK(self, a, n, m, k):
+        if k>n*m:
+            return 0
+        i=j=0
+        flag=0
+        sr,er=0,n-1
+        sc,ec=0,m-1
+        #vis=[[0 for i in range(m)]for j in range(n)]
+        cnt=1
+        while cnt<=k and sr<=er and sc<=ec:
+            temp=a[i][j]
+            if cnt==k:
+                return temp
+            if flag==0:
+                if j==ec:
+                    flag=1
+                    sr+=1
+                    i+=1
+                else:
+                    j+=1
+            elif flag==1:
+                if i==er:
+                    flag=2
+                    ec-=1
+                    j-=1
+                else:
+                    i+=1
+            elif flag==2:
+                if j==sc:
+                    flag=3
+                    er-=1
+                    i-=1
+                else:
+                    j-=1
+            elif flag==3:
+                if i==sr:
+                    flag=0
+                    sc+=1
+                    j+=1
+                else:
+                    i-=1
+
+            cnt+=1
+        return 0
+                    
+            
+            
+        # Write Your Code here
